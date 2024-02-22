@@ -11,7 +11,16 @@ module.exports =  getDetails = async(req,res,next) =>{
         const PAGE_URL = `${process.env.BASE_URL}${city}`;
     
        
-            const browser = await puppeteer.launch({ headless: 'new' });
+            const browser = await puppeteer.launch({ 
+                headless: 'new' ,            
+                executablePath : process.env.NODE_ENV === 'production' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
+                args : [
+                    "--disable-setuid-sandbox",
+                    "--no-sandbox",
+                    "--single-process",
+                    "--no-zygote"
+                ]
+            });
             const page = await browser.newPage();
             await page.goto(PAGE_URL);
             const buttonConsentReject = await page.$('.VfPpkd-LgbsSe[aria-label="Reject all"]');
