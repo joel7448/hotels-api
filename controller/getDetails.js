@@ -3,7 +3,7 @@ require('dotenv').config();
 const baseUrl = process.env.BASE_URL;
 
 const cheerio = require('cheerio');
-
+process.env.PUPPETEER_DOWNLOAD_PATH = '/opt/render/.cache/puppeteer';
 
 module.exports =  getDetails = async(req,res,next) =>{
     try{
