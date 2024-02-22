@@ -1,5 +1,6 @@
 const express = require('express');
 const getDetails = require('./controller/getDetails');
+require('dotenv').require();
 const app = express();
 
 app.use(express.json());

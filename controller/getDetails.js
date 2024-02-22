@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
-const dotenv = require('dotenv').config();
-baseUrl = process.env.BASE_URL;
-
+require('dotenv').config();
+const baseUrl = process.env.BASE_URL;
 
 const cheerio = require('cheerio');
 
@@ -57,7 +56,7 @@ module.exports =  getDetails = async(req,res,next) =>{
             }); 
     
         res.status(200).json({
-            hotelsList
+            data : hotelsList
         })
     }
     catch(err){
