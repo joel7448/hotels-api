@@ -4,8 +4,8 @@ require('dotenv').config();
 const app = express();
 // const host = '0.0.0.0';
 
-// process.env.PUPPETEER_DOWNLOAD_PATH = '/opt/render/.cache/puppeteer';
-
+process.env.PUPPETEER_DOWNLOAD_PATH = '/opt/render/.cache/puppeteer';
+console.log(process.env.BASE_URL)
 
 app.use(express.json());
 

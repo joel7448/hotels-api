@@ -8,24 +8,14 @@ process.env.PUPPETEER_DOWNLOAD_PATH = '/opt/render/.cache/puppeteer';
 module.exports =  getDetails = async(req,res,next) =>{
     try{
         const city = req.params.id
-        const PAGE_URL = `${process.env.BASE_URL}${city}`;
-    
+        const PAGE_URL = `${process.env.BASE_URL}${city}`;    
        
             const browser = await puppeteer.launch({ 
-                headless: 'new' ,            
-                timeout: 60000,
-                executablePath : process.env.NODE_ENV === 'production' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
-                args : [
-                    "--disable-setuid-sandbox",
-                    "--no-sandbox",
-                    "--single-process",
-                    "--no-zygote"
-                ]
+                headless: 'new'        
+                
             });
             const page = await browser.newPage();
             await page.goto(PAGE_URL);
-            const buttonConsentReject = await page.$('.VfPpkd-LgbsSe[aria-label="Reject all"]');
-            await buttonConsentReject?.click();
             const html = await page.content();
             await browser.close();
        
