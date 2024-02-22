@@ -13,6 +13,7 @@ module.exports =  getDetails = async(req,res,next) =>{
        
             const browser = await puppeteer.launch({ 
                 headless: 'new' ,            
+                timeout: 60000,
                 executablePath : process.env.NODE_ENV === 'production' ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
                 args : [
                     "--disable-setuid-sandbox",
