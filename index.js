@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const app = express();
 const host = '0.0.0.0';
+
 process.env.PUPPETEER_DOWNLOAD_PATH = '/opt/render/.cache/puppeteer';
 
 app.use(cors({
