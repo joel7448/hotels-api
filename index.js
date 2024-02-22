@@ -1,6 +1,6 @@
 const express = require('express');
 const getDetails = require('./controller/getDetails');
-require('dotenv').require();
+require('dotenv').config();
 const app = express();
 process.env.PUPPETEER_DOWNLOAD_PATH = '/opt/render/.cache/puppeteer';
 app.use(express.json());
